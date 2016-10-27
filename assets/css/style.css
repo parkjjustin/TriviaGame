@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Lalezar');
 
-html, body{
+html, body {
 	background: URL("../images/bg.jpg");
 	background-size: cover;
 	height: 100%;
@@ -34,7 +34,6 @@ button {
 	background-color: gold;
 	color: black;
 	border: 2px solid black;
-
 }
 
 #startButton {
@@ -47,3 +46,9 @@ button {
 	width: 600px;
 	margin-top: 30px;
 }
+
+h4 {
+	font-family: 'Lalezar', cursive;
+	font-size: 23px;
+}
+

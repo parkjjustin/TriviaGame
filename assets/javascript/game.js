@@ -1,9 +1,8 @@
-
 var unanswered = 0;
 var answeredWrong =0;
 var answeredCorrect = 0;
 var triviaQuestions = 0;
-var timeLeft = 11;
+var timeLeft = 10;
 
 var trivia = [{
 
@@ -62,6 +61,7 @@ function displayTrivia(){
 	reset();
 	startGame();
 	$(".timerHeader").show();
+	$("#timer").html("<h4 id='time'>" + timeLeft + "</h4>");
 	$("#firstQuestion").html("<h4 id='question'>" + trivia[triviaQuestions].question  + "<h4>");
 	for (var i = 0; i < trivia[triviaQuestions].options.length; i++) {
 		$(".answers").append("<button class=\"options\" data-id="+i+">" + trivia[triviaQuestions].options[i] + "</button>")
@@ -70,13 +70,11 @@ function displayTrivia(){
 	$(".options").on ("click", function(){
 		if ($(this).data("id") === trivia[triviaQuestions].answer){
 			answeredCorrect++;
-			console.log(answeredCorrect);
 			endQuestion();
 			answeredCorrectly();
 			
 		} else {
 			answeredWrong++;
-			console.log(answeredWrong);
 			endQuestion();
 			answeredWrongly();
 			
@@ -98,7 +96,6 @@ function stopWatch () {
 		unanswered++;
 		didntAnswer();
 		endQuestion();
-		console.log(unanswered)
 		
 		} if (triviaQuestions === trivia.length){
 			setTimeout(displayGameOver, 1500);
@@ -107,42 +104,56 @@ function stopWatch () {
 
 function endQuestion (){
 	clearInterval(timer);
-	timeLeft = 11;
+	timeLeft = 10;
 	setTimeout(displayTrivia, 1500)
 };
 
 function answeredCorrectly(){
 	reset();
-	$("#firstQuestion").append("<h2 class='correct'>Correct!</h2>");
+	$("#firstQuestion").append("<h4 class='correct'>Correct!</h4>");
 	$(".answers").append("<img class='triviaImage' src=\'" + trivia[triviaQuestions].image + "\'>" )
 	triviaQuestions++;
 };
  
 function answeredWrongly(){
 	reset();
-	$("#firstQuestion").append("<h2 class='wrong'>Wrong! The correct answer was</h2>" + trivia[triviaQuestions].options[trivia[triviaQuestions].answer] +"");
+	$("#firstQuestion").append("<h4 class='wrong'>Wrong! The correct answer was " + trivia[triviaQuestions].options[trivia[triviaQuestions].answer] +"!</h4>");
 	$(".answers").append("<img class='triviaImage' src=\'" + trivia[triviaQuestions].image + "\'>" )
 	triviaQuestions++;
 };
 
 function didntAnswer(){
 	reset();
-	$("#firstQuestion").append("<h2 class='wrong'>Time's up! The correct answer was</h2>" + trivia[triviaQuestions].options[trivia[triviaQuestions].answer] +"");
+	$("#firstQuestion").append("<h4 class='wrong'>Time's up! The correct answer was " + trivia[triviaQuestions].options[trivia[triviaQuestions].answer] +"!</h4>");
 	$(".answers").append("<img class='triviaImage' src=\'" + trivia[triviaQuestions].image + "\'>" )
 	triviaQuestions++;
 };
 
 function displayGameOver(){
 	reset();
-	$('#timer').remove();
-	$("#firstQuestion").html("<h2 class='gameOver'>Game Over!</h2><h2 class='gameOver'>Correct: " + answeredCorrect + "</h2><h2 class='gameOver'>Wrong: " + answeredWrong + "</h2><h2 class='gameOver'>Unanswered: " + unanswered + "</h2>");
+	$('#timer').hide();
+	$("#firstQuestion").html("<h4 class='gameOver'>Game Over!</h4><h4 class='gameOver'>Correct: " + answeredCorrect + "</h4><h4 class='gameOver'>Wrong: " + answeredWrong + "</h4><h4 class='gameOver'>Unanswered: " + unanswered + "</h4>");
+	$(".answers").html("<button id='playButton'>Play again</button>")
+	triviaQuestions = 0;
+
+	$("#playButton").on("click", function() {
+	displayTrivia();
+	$("#playButton").hide();
+	$("#timer").show();
+	unanswered = 0;
+    answeredWrong =0;
+    answeredCorrect = 0;
+});
+
 };
 
+
 function reset(){
+	clearInterval(timer);
 	$(".timerHeader").hide();
 	$(".options").remove();
 	$("#question").remove();
 	$("#time").remove();
 	$(".triviaImage").remove();
-	timeLeft = 11;
+	timeLeft = 10;
 };
