@@ -47,9 +47,7 @@ var trivia = [{
 	answer: 1,
 	image: "assets/images/mewtwo.jpg"
 	
-	}
-
-	]
+	}]
 
 
 
@@ -111,34 +109,34 @@ function endQuestion (){
 	clearInterval(timer);
 	timeLeft = 11;
 	setTimeout(displayTrivia, 1500)
-}
+};
 
 function answeredCorrectly(){
 	reset();
 	$("#firstQuestion").append("<h2 class='correct'>Correct!</h2>");
 	$(".answers").append("<img class='triviaImage' src=\'" + trivia[triviaQuestions].image + "\'>" )
 	triviaQuestions++;
-}
+};
  
 function answeredWrongly(){
 	reset();
 	$("#firstQuestion").append("<h2 class='wrong'>Wrong! The correct answer was</h2>" + trivia[triviaQuestions].options[trivia[triviaQuestions].answer] +"");
 	$(".answers").append("<img class='triviaImage' src=\'" + trivia[triviaQuestions].image + "\'>" )
 	triviaQuestions++;
-}
+};
 
 function didntAnswer(){
 	reset();
 	$("#firstQuestion").append("<h2 class='wrong'>Time's up! The correct answer was</h2>" + trivia[triviaQuestions].options[trivia[triviaQuestions].answer] +"");
 	$(".answers").append("<img class='triviaImage' src=\'" + trivia[triviaQuestions].image + "\'>" )
 	triviaQuestions++;
-}
+};
 
 function displayGameOver(){
 	reset();
 	$('#timer').remove();
 	$("#firstQuestion").html("<h2 class='gameOver'>Game Over!</h2><h2 class='gameOver'>Correct: " + answeredCorrect + "</h2><h2 class='gameOver'>Wrong: " + answeredWrong + "</h2><h2 class='gameOver'>Unanswered: " + unanswered + "</h2>");
-}
+};
 
 function reset(){
 	$(".timerHeader").hide();
@@ -147,6 +145,4 @@ function reset(){
 	$("#time").remove();
 	$(".triviaImage").remove();
 	timeLeft = 11;
-
-
-}
+};
