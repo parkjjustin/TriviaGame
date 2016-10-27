@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css?family=Lalezar');
+
+html, body{
+	background: URL("../images/bg.jpg");
+	background-size: cover;
+	height: 100%;
+	position: relative;
+	margin: 0 auto;
+	color: black;
+	font-family: 'Lalezar', cursive;
+	font-size: 20px;
+}
+
+
+.titleHeader, #timer, .question, .answers, .timerHeader{
+	text-align: center;
+	margin: 0 auto;
+}
+
+button {
+	display: block;
+	margin: 0 auto;
+	width: 200px;
+	height: 30px;
+	background-color: black;
+	color: gold;
+	border: 1px solid gray;
+	margin-top: 10px;
+	font-family: 'Lalezar', cursive;
+	font-size: 20px;
+}
+
+.options:hover, #startButton:hover {
+	background-color: gold;
+	color: black;
+	border: 2px solid black;
+
+}
+
+#startButton {
+	margin-top: 150px;
+	width: 200px;
+	height: 40px;
+}
+
+.headerImage {
+	width: 600px;
+	margin-top: 30px;
+}
