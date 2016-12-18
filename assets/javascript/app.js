@@ -45,6 +45,19 @@ var trivia = [{
 	options: ["Arceus", "Mega Mewtwo", "Mega Tyranitar", "Kyurem" ],
 	answer: 1,
 	image: "assets/images/mewtwo.jpg"
+	}, {
+	
+	question: "What is Professor Oak's Japanese name?",
+	options: ["Okido", "Okita", "Nani", "Ichigo" ],
+	answer: 0,
+	image: "assets/images/professor.jpg"
+	
+	}, {
+	
+	question: "How many times has Brock left the gang?",
+	options: ["0", "1", "2", "3" ],
+	answer: 2,
+	image: "assets/images/brock.jpg"
 	
 	}]
 
